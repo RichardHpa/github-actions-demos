@@ -1,0 +1,18 @@
+# Workflow for Jest Suite
+name: 🃏 Jest
+
+on: [push]
+
+jobs:
+  jest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 'Setup Node, Caching, and Yarn install'
+        uses: ./.github/actions/node-yarn
+
+      - name: Run jest
+        run: yarn test

@@ -1,0 +1,12 @@
+name: 'Install Node + Yarn'
+description: Installs node and yarn
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+    - run: yarn install --ignore-optional --frozen-lockfile --prefer-offline
+      shell: bash
